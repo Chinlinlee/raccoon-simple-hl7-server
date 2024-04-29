@@ -1,16 +1,15 @@
 import { Hl7Component } from "./component";
 import { Delimiters } from "./delimiters";
 
-export class Hl7Field<T=string> {
+export class Hl7Field {
     value: (Hl7Component | Hl7Component[])[];
 
-    constructor(...args: (T | T[])[]) {
+    constructor(...args: (string | string[])[] | ((string | string[])[])[]) {
         this.value = [];
-        args.forEach(v=> console.log(typeof v, v));
         this.#init(args);
     }
 
-    #init(args: (T | T[])[]) {
+    #init(args: (string | string[])[] | ((string | string[])[])[]) {
         if (args.length > 0) {
             for (let i = 0; i < args.length; i++) {
                 if (Array.isArray(args[i])) {
