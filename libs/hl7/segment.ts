@@ -29,10 +29,10 @@ export class Hl7Segment {
         }
     }
 
-    addField(fieldValue: string | string[], position?: number) {
+    addField(fieldValue: string | string[] | Hl7Field, position?: number) {
         if (position) {
             if (this.fields.length > position - 1) {
-                this.setField(position, fieldValue);
+                this.setField(position, fieldValue as string | string[]);
             } else {
                 let curLength = this.fields.length;
                 while (curLength <= position - 2) {
@@ -88,6 +88,7 @@ export class Hl7Segment {
         if (this.fields.length >= fieldIndex) {
             let field = this.fields[fieldIndex - 1] as Hl7Field;
             let components = (field.value[0]) as Hl7Component[];
+            
             if (components.length >= componentIndex) {
                 let component = components[componentIndex - 1];
                 if (subComponentIndex) {
