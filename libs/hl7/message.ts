@@ -17,7 +17,7 @@ export class Hl7Message {
 
     getSegment(name: string) {
         let hitSegment = this.segments.find(v => v.name === name);
-        return hitSegment ?? "";
+        return hitSegment || "";
     }
 
     getSegments(name: string) {
