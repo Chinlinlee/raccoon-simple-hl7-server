@@ -23,7 +23,6 @@ export class Hl7Header {
     }
 
     #init(args: (string | string[] | (string | string[])[])[]) {
-        console.log("header init");
         if (args.length > 0) {
             for(let i = 0 ; i < args.length ; i++) {
                 if (Array.isArray(args[i])) {
