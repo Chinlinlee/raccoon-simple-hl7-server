@@ -2,6 +2,7 @@ import assert from "node:assert";
 import { describe, it } from "node:test";
 import { Hl7Parser } from "../../libs/hl7/parser";
 import fs from "fs";
+import { Hl7Segment } from "../../libs/hl7/segment";
 
 describe("HL7 Parser", () => {
     describe(".parse()", () => {
@@ -16,6 +17,15 @@ describe("HL7 Parser", () => {
             assert.equal(new Hl7Parser({segmentSeparator: '\n'}).parse(msg2).segments.length, 1); 
         });
         
+        it("should parse message and getting correct component if there is a repetition", () => {
+            // from: https://github.com/hitgeek/simple-hl7/issues/77
+            let msg = "MSH|^~\\&|Header Field 1|Header Field 2\rPID|1|124553|124553^^^TEST^PI~~~||JOHN^DOE|";
+            let parser = new Hl7Parser();
+            let parsedMessage = parser.parse(msg);
+            let text = (parsedMessage.getSegment("PID") as Hl7Segment).getComponent(3, 4);
+
+            assert.equal(text, "TEST");
+        });
     });
 
     describe("parse sample document. Success = output same as input", () => {
@@ -42,6 +52,6 @@ describe("HL7 Parser", () => {
             let adt = parser.parse(sample.toString().replace(/\r?\n/g, "\r"));
             assert.equal(adt.segments.length, 3);
         }); 
-    })
+    });
 })
 
