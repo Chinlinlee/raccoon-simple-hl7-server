@@ -4,7 +4,7 @@ import { Hl7Segment } from "./segment";
 export class Hl7Message {
     header: Hl7Header;
     segments: Hl7Segment[];
-    constructor(...args: string[]) {
+    constructor(...args: (string | string[])[]) {
         this.header = new Hl7Header();
         this.segments = [];
 
