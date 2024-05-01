@@ -1,5 +1,5 @@
 {
-  "name": "simple-hl7-pacs-server",
+  "name": "raccoon-simple-hl7-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
