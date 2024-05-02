@@ -58,11 +58,9 @@ function call(
     const hasError = Boolean(err);
     try {
         if (hasError && arity === 4) {
-            console.log("error middle");
             (handle as ErrorMiddlewareHandle)(err!, req, res, next);
             return;
         } else if (!hasError && arity < 4) {
-            console.log("middle");
             (handle as MiddlewareHandle)(req, res, next);
             return;
         }
