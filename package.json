@@ -2,9 +2,13 @@
   "name": "raccoon-simple-hl7-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/apps/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build"
   },
   "keywords": [],
   "author": "",
