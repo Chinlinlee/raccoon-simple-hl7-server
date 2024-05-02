@@ -1,6 +1,8 @@
 # raccoon-simple-hl7-server
 The simple hl7 server for raccoon
 
+Modified from [simple-hl7](https://github.com/hitgeek/simple-hl7)
+
 ## Usage
 
 - You can find example code from: `examples/tcp.example.ts`
